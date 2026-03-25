@@ -10,7 +10,7 @@ CORS(app)
 
 bus_data = {}
 
-GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbzSzTxr8dzgx79bpR8iMTTs0UuDAXfot4JG2ZUiRlHyIIejVr7dsb7mQDEWDoaV9UpmnA/exec"
+GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbzSzTxr8dzgx79bpR8iMTTs0UuDAXfot4JG2ZUiRlHyIIejVr7dsb7mQDEWDoaV9UpmnA/exec?action=getLast"
 
 
 @app.route('/')
