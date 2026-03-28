@@ -10,7 +10,7 @@ CORS(app)
 
 bus_data = {}
 
-GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbzSzTxr8dzgx79bpR8iMTTs0UuDAXfot4JG2ZUiRlHyIIejVr7dsb7mQDEWDoaV9UpmnA/exec?action=getLast"
+GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbzSzTxr8dzgx79bpR8iMTTs0UuDAXfot4JG2ZUiRlHyIIejVr7dsb7mQDEWDoaV9UpmnA/exec"
 
 
 @app.route('/')
@@ -26,12 +26,14 @@ def update_location():
     lat = data.get("lat")
     lon = data.get("lon")
     speed = data.get("speed", 0)
+    status = data.get("status", "UNKNOWN")
 
     bus_data[bus_id] = {
         "bus_id": bus_id,
         "lat": lat,
         "lon": lon,
         "speed": speed,
+        "status":status,
         "timestamp": int(time.time())
     }
 
@@ -58,7 +60,8 @@ def get_buses():
                     "bus_id": "BUS_01",
                     "lat": data["lat"],
                     "lon": data["lon"],
-                    "status": "FROM_SHEETS"
+                    "speed":0.0,
+                    "status": "OFFLINE"
                 }
             ]
         })
@@ -71,7 +74,8 @@ def get_buses():
                     "bus_id": "BUS_01",
                     "lat": 12.9716,
                     "lon": 79.1595,
-                    "status": "NO_DATA"
+                    "speed" : 0.0,
+                    "status": "OFFLINE"
                 }
             ]
         })
